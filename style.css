@@ -1,0 +1,24 @@
+#HnHU-FoundUsers {
+	position: fixed;
+	right: 0;
+	top: 30%;
+	padding: 10px;
+	background-color: #828282;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+#HnHU-FoundUsers h1 {
+	color: white;
+	font-size: 14px;
+	margin-top: 0;
+}
+
+#HnHU-FoundUsers a {
+	display: block;
+	color: white;
+}
+
+#HnHU-FoundUsers a:hover {
+	text-decoration: underline;
+}

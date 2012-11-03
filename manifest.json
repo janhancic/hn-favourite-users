@@ -15,6 +15,9 @@
 			],
 			"js": [
 				"script.js"
+			],
+			"css": [
+				"style.css"
 			]
 		}
 	],

@@ -4,7 +4,6 @@ var forEach = Array.prototype.forEach;
 // tmp static users list
 var usersToHighlight = [
 	'pg',
-	'CWIZO',
 	'6ren',
 	'rishi',
 	'jhuckestein',
@@ -28,4 +27,21 @@ forEach.call ( userLinks, function ( userLink ) {
 	}
 } );
 
-console.log ( usersFound );
+if ( usersFound.length > 0 ) {
+	var foundUsersEl = document.createElement ( 'div' );
+	foundUsersEl.id = 'HnHU-FoundUsers';
+
+	var foundUsersTitleEl = document.createElement ( 'h1' );
+	foundUsersTitleEl.innerHTML = 'Found users:';
+	foundUsersEl.appendChild ( foundUsersTitleEl );
+
+	usersFound.forEach ( function ( userFound ) {
+		var tmpEl = document.createElement ( 'a' );
+		tmpEl.href = 'http://news.ycombinator.com/user?id=' + userFound;
+		tmpEl.innerHTML = userFound;
+
+		foundUsersEl.appendChild ( tmpEl );
+	} );
+
+	document.body.appendChild ( foundUsersEl );
+}
