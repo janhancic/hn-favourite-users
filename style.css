@@ -14,6 +14,15 @@
 	margin-top: 0;
 }
 
+#HnHU-FoundUsers div {
+	color: white;
+}
+
+#HnHU-FoundUsers div a {
+	display: inline;
+	text-decoration: underline;
+}
+
 #HnHU-FoundUsers a {
 	display: block;
 	color: white;

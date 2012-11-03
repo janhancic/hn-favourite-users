@@ -27,10 +27,10 @@ forEach.call ( userLinks, function ( userLink ) {
 	}
 } );
 
-if ( usersFound.length > 0 ) {
-	var foundUsersEl = document.createElement ( 'div' );
-	foundUsersEl.id = 'HnHU-FoundUsers';
+var foundUsersEl = document.createElement ( 'div' );
+foundUsersEl.id = 'HnHU-FoundUsers';
 
+if ( usersFound.length > 0 ) {
 	var foundUsersTitleEl = document.createElement ( 'h1' );
 	foundUsersTitleEl.innerHTML = 'Found users:';
 	foundUsersEl.appendChild ( foundUsersTitleEl );
@@ -42,6 +42,10 @@ if ( usersFound.length > 0 ) {
 
 		foundUsersEl.appendChild ( tmpEl );
 	} );
-
-	document.body.appendChild ( foundUsersEl );
+} else {
+	var noUsersFoundEl = document.createElement ( 'div' );
+	noUsersFoundEl.innerHTML = 'No users found.<br /><a href="#">Click here</a>, to add some users to highlight.';
+	foundUsersEl.appendChild ( noUsersFoundEl );
 }
+
+document.body.appendChild ( foundUsersEl );
