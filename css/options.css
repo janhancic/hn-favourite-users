@@ -1,3 +1,8 @@
+p.lead b {
+	color: #ff6600;
+	font-weight: normal;
+}
+
 .table {
 	margin-left: 0;
 }
