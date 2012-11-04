@@ -23,6 +23,7 @@
 		}
 	],
 	"permissions": [
-		"unlimitedStorage"
+		"unlimitedStorage",
+		"http://news.ycombinator.com/*"
 	]
 }

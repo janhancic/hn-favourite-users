@@ -16,13 +16,15 @@ Users.prototype.exists = function ( userName ) {
 
 Users.prototype.isValid = function ( userName ) {
 	var isValid = true;
-	/*$.ajax ( {
+	$.ajax ( {
 		async: false,
 		url: 'http://news.ycombinator.com/user?id=' + userName,
-		callback: function ( response ) {
-
+		success: function ( response ) {
+			if ( response.substr ( 0, 13 ) === 'No such user.' ) {
+				isValid = false;
+			}
 		}
-	} );*/
+	} );
 
 	return isValid
 };
