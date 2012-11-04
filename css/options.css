@@ -6,3 +6,12 @@ p.lead b {
 aside {
 	margin-top: 20px;
 }
+
+#txtNewUser {
+	height: 28px;
+}
+
+#btnAddNewUser {
+	height: 38px;
+	margin-right: 10px;
+}
