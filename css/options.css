@@ -15,3 +15,7 @@ aside {
 	height: 38px;
 	margin-right: 10px;
 }
+
+#ErrorMsg {
+	display: none;
+}

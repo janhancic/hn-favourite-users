@@ -13,11 +13,6 @@
 					<p class="lead">Add or remove your favourite <b>Hacker News</b> users below.</p>
 					<table class="table table-striped table-hover table-condensed">
 						<tbody id="UsersList">
-							<tr>
-			<td><%= username %></td>
-			<td><a href="http://news.hackernews.com/user?id=<%= username %>" target="_blank">view profile</a></td>
-			<td><a href="#remove" class="icon-trash"></a></td>
-		</tr>
 						</tbody>
 						<tfoot>
 							<tr>
@@ -27,7 +22,7 @@
 											<input id="txtNewUser" type="text" placeholder="Enter HN user ..." /> 
 											<input id="btnAddNewUser" type="submit" value="add" class="btn btn-primary" />
 										</div>
-										<div class="alert alert-error pull-left">
+										<div id="ErrorMsg" class="alert alert-error pull-left">
 										This user does not exist.
 										</div>
 									</form>
@@ -48,6 +43,8 @@
 		</div>
 
 		<script src="js/jquery_1.8.2.js"></script>
+		<script src="js/users.js"></script>
+		<script src="js/localstorage.js"></script>
 		<script src="js/options.js"></script>
 		<!--script src="js/bootstrap_2.2.1.js"></script-->
 	</body>
