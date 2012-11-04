@@ -1,8 +1,8 @@
 {
-	"name": "HN Highlight Users",
+	"name": "HN Favourite Users",
 	"version": "0.1",
 	"manifest_version": 2,
-	"description": "Highlights selected users on Hacker News (http://news.ycombinator.com/)",
+	"description": "Highlights your favourite users on Hacker News (http://news.ycombinator.com/)",
 	"icons": {
 		"16": "images/icon_16.png",
 		"48": "images/icon_48.png",

@@ -32,7 +32,7 @@ foundUsersEl.id = 'HnHU-FoundUsers';
 
 if ( usersFound.length > 0 ) {
 	var foundUsersTitleEl = document.createElement ( 'h1' );
-	foundUsersTitleEl.innerHTML = 'Found users:';
+	foundUsersTitleEl.innerHTML = 'Your favourite users:';
 	foundUsersEl.appendChild ( foundUsersTitleEl );
 
 	usersFound.forEach ( function ( userFound ) {
@@ -44,7 +44,7 @@ if ( usersFound.length > 0 ) {
 	} );
 } else {
 	var noUsersFoundEl = document.createElement ( 'div' );
-	noUsersFoundEl.innerHTML = 'No users found.<br /><a href="#">Click here</a>, to add some users to highlight.';
+	noUsersFoundEl.innerHTML = 'No favourite users found.<br /><a href="#">Click here</a>, to add some users to your favourites list.';
 	foundUsersEl.appendChild ( noUsersFoundEl );
 }
 
