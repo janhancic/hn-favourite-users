@@ -9,6 +9,13 @@
 		"128": "images/icon_128.png"
 	},
 	"options_page": "options.html",
+	"background": {
+		"scripts": [
+			"js/localstorage.js",
+			"js/users.js",
+			"js/messages.js"
+		]
+	},
 	"content_scripts": [
 		{
 			"matches": [

@@ -16,6 +16,7 @@ Users.prototype.exists = function ( userName ) {
 
 Users.prototype.isValid = function ( userName ) {
 	var isValid = true;
+	return isValid;
 	$.ajax ( {
 		async: false,
 		url: 'http://news.ycombinator.com/user?id=' + userName,
