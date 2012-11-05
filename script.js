@@ -17,6 +17,8 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 			console.log ( userLink.href );
 			userLink.style.color = 'white';
 			userLink.style.backgroundColor = highlightColour;
+			userLink.style.padding = '1px';
+			userLink.style.borderRadius = '3px';
 
 			usersFound.push ( userLink.innerHTML );
 		}
