@@ -15,8 +15,7 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 		if ( usersToHighlight.indexOf ( userLink.innerHTML ) !== -1 ) {
 			userLink.style.color = 'white';
 			userLink.style.backgroundColor = highlightColour;
-			userLink.style.padding = '1px';
-			userLink.style.borderRadius = '3px';
+			userLink.className = 'HnHU-User';
 
 			if ( usersFound.indexOf ( userLink.innerHTML ) === -1 ) {
 				usersFound.push ( userLink.innerHTML );

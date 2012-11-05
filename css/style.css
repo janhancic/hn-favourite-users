@@ -31,3 +31,7 @@
 #HnHU-FoundUsers a:hover {
 	text-decoration: underline;
 }
+a.HnHU-User {
+	padding: 1px;
+	border-radius: 3px;
+}
