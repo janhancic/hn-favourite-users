@@ -12,15 +12,15 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 
 	var usersFound = [];
 	forEach.call ( userLinks, function ( userLink ) {
-		console.log ( 'a' );
 		if ( usersToHighlight.indexOf ( userLink.innerHTML ) !== -1 ) {
-			console.log ( userLink.href );
 			userLink.style.color = 'white';
 			userLink.style.backgroundColor = highlightColour;
 			userLink.style.padding = '1px';
 			userLink.style.borderRadius = '3px';
 
-			usersFound.push ( userLink.innerHTML );
+			if ( usersFound.indexOf ( userLink.innerHTML ) === -1 ) {
+				usersFound.push ( userLink.innerHTML );
+			}
 		}
 	} );
 
