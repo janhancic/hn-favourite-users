@@ -1,4 +1,4 @@
-#HnHU-FoundUsers {
+#HnFU-FoundUsers {
 	position: fixed;
 	right: 0;
 	top: 30%;
@@ -8,30 +8,30 @@
 	border-bottom-left-radius: 5px;
 }
 
-#HnHU-FoundUsers h1 {
+#HnFU-FoundUsers h1 {
 	color: white;
 	font-size: 14px;
 	margin-top: 0;
 }
 
-#HnHU-FoundUsers div {
+#HnFU-FoundUsers div {
 	color: white;
 }
 
-#HnHU-FoundUsers div a {
+#HnFU-FoundUsers div a {
 	display: inline;
 	text-decoration: underline;
 }
 
-#HnHU-FoundUsers a {
+#HnFU-FoundUsers a {
 	display: block;
 	color: white;
 }
 
-#HnHU-FoundUsers a:hover {
+#HnFU-FoundUsers a:hover {
 	text-decoration: underline;
 }
-a.HnHU-User {
+a.HnFU-User {
 	padding: 1px;
 	border-radius: 3px;
 }

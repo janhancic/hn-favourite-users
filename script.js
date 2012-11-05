@@ -15,7 +15,7 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 		if ( usersToHighlight.indexOf ( userLink.innerHTML ) !== -1 ) {
 			userLink.style.color = 'white';
 			userLink.style.backgroundColor = highlightColour;
-			userLink.className = 'HnHU-User';
+			userLink.className = 'HnFU-User';
 
 			if ( usersFound.indexOf ( userLink.innerHTML ) === -1 ) {
 				usersFound.push ( userLink.innerHTML );
@@ -24,7 +24,7 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 	} );
 
 	var foundUsersEl = document.createElement ( 'div' );
-	foundUsersEl.id = 'HnHU-FoundUsers';
+	foundUsersEl.id = 'HnFU-FoundUsers';
 
 	if ( usersFound.length > 0 ) {
 		var foundUsersTitleEl = document.createElement ( 'h1' );
