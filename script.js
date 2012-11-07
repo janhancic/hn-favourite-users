@@ -40,7 +40,7 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 		} );
 	} else {
 		var noUsersFoundEl = document.createElement ( 'div' );
-		noUsersFoundEl.innerHTML = 'No favourite users found.<br /><a href="#">Click here</a>, to add some users to your favourites list.';
+		noUsersFoundEl.innerHTML = 'No favourite users found.<br /><a href="' + chrome.extension.getURL ( 'options.html' ) + '">Click here</a>, to add some users<br /> to your favourites list.';
 		foundUsersEl.appendChild ( noUsersFoundEl );
 	}
 
