@@ -16,8 +16,14 @@ aside {
 	margin-right: 10px;
 }
 
-#ErrorMsg {
+#PageMessage {
 	display: none;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	width: 300px;
+	margin-left: -150px;
+	text-align: center;
 }
 
 .btn.loading {

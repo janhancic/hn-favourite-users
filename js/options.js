@@ -1,3 +1,35 @@
+var pageMessage = (function () {
+	var $message = $( '#PageMessage' );
+	var fadeOutTimer = null;
+
+	return {
+		show: function ( type, message ) {
+			$message.removeClass ( 'alert-error' );
+			$message.removeClass ( 'alert-success' );
+
+			if ( type === 'error' ) {
+				$message.addClass ( 'alert-error' );
+			} else {
+				$message.addClass ( 'alert-success' );
+			}
+
+			$message.html ( message );
+			$message.show ();
+
+			fadeOutTimer = setTimeout (
+				function () {
+					$message.fadeOut ();
+				},
+				5000
+			);
+		},
+		hide: function () {
+			clearTimeout ( fadeOutTimer );
+			$message.hide ();
+		}
+	};
+} () );
+
 function getUserHtml ( userName ) {
 	return '<tr id="tr_' + userName + '"><td>' + userName + '</td><td><a href="http://news.ycombinator.com/user?id=' + userName + '" target="_blank">view profile</a></td><td><a href="#remove" class="icon-trash" data-username="' + userName + '"></a></td></tr>';
 }
@@ -32,7 +64,7 @@ $( function () {
 	} );
 
 	$( '#AddNewUserForm' ).submit ( function () {
-		$errorMsg.hide ();
+		pageMessage.hide ();
 		$btnAddNewUser.attr ( 'disabled', true ).addClass ( 'loading disabled' );
 		$txtNewUser.attr ( 'disabled', true );
 
@@ -44,7 +76,7 @@ $( function () {
 		}
 
 		if ( users.exists ( userNameToAdd ) === true )  {
-			$errorMsg.html ( 'user already on your list' ).show ();
+			pageMessage.show ( 'error', 'user already on your list' );
 			$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
 			$txtNewUser.attr ( 'disabled', false );
 
@@ -52,7 +84,7 @@ $( function () {
 		}
 
 		if ( users.isValid ( userNameToAdd ) === false ) {
-			$errorMsg.html ( 'enter a valid HN username' ).show ();
+			pageMessage.show ( 'error', 'enter a valid HN username' );
 			$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
 			$txtNewUser.attr ( 'disabled', false );
 
@@ -69,12 +101,16 @@ $( function () {
 		$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
 		$txtNewUser.attr ( 'disabled', false );
 
+		pageMessage.show ( 'success', 'user added to your list' );
+
 		return false;
 	} );
 
 	$( '#HighlightColourForm' ).submit ( function () {
 		highlightColours.setBackgroundColour ( '#' + $txtBackgroundColour.val () );
 		highlightColours.setColour ( '#' + $txtColour.val () );
+
+		pageMessage.show ( 'success', 'colours saved' );
 
 		return false;
 	} );
@@ -85,6 +121,8 @@ $( function () {
 
 		$txtBackgroundColour.val ( 'ff6600' );
 		$txtColour.val ( 'ffffff' );
+
+		pageMessage.show ( 'success', 'colours reset to default values' );
 
 		return false;
 	} );

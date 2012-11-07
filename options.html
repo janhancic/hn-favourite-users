@@ -18,12 +18,9 @@
 							<tr>
 								<td colspan="3">
 									<form class="form-inline" id="AddNewUserForm">
-										<div class="input-append pull-left">
+										<div class="input-append">
 											<input id="txtNewUser" type="text" placeholder="Enter HN user ..." /> 
 											<input id="btnAddNewUser" type="submit" value="add" class="btn btn-primary" />
-										</div>
-										<div id="ErrorMsg" class="alert alert-error pull-left">
-										This user does not exist.
 										</div>
 									</form>
 								</td>
@@ -68,6 +65,7 @@
 				</aside>
 			</div>
 		</div>
+		<div id="PageMessage" class="alert"></div>
 
 		<script src="js/jquery_1.8.2.js"></script>
 		<script src="js/users.js"></script>
