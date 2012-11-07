@@ -3,7 +3,9 @@ chrome.extension.onRequest.addListener ( function ( request, sender, sendRespons
 		var users = new Users ();
 
 		sendResponse ( {
-			users: users.getAll ()
+			users: users.getAll (),
+			highlightBackgroundColour: '#ff6600',
+			highlightColour: 'white'
 		} );
 	}
 } );

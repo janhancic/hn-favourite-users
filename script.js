@@ -4,8 +4,8 @@ var forEach = Array.prototype.forEach;
 chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData ) {
 	var usersToHighlight = extensionData.users;
 
-	// get the background colour of the top navigation bar
-	var highlightColour = document.querySelector ( 'table:first-child td:first-child' ).getAttribute ( 'bgcolor' );
+	var highlightBackgroundColour = extensionData.highlightBackgroundColour;
+	var highlightColour = extensionData.highlightColour;
 
 	// get all user links on the page
 	var userLinks = document.querySelectorAll ( 'a[href^="user?id="]' );
@@ -17,8 +17,8 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 		}
 
 		if ( usersToHighlight.indexOf ( userLink.innerHTML ) !== -1 ) {
-			userLink.style.color = 'white';
-			userLink.style.backgroundColor = highlightColour;
+			userLink.style.color = highlightColour;
+			userLink.style.backgroundColor = highlightBackgroundColour;
 			userLink.className = 'HnFU-User';
 
 			if ( usersFound.indexOf ( userLink.innerHTML ) === -1 ) {
