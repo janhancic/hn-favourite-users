@@ -78,4 +78,14 @@ $( function () {
 
 		return false;
 	} );
+
+	$( '#ResetColoursLink' ).click ( function () {
+		highlightColours.setBackgroundColour ( '#ff6600' );
+		highlightColours.setColour ( '#ffffff' );
+
+		$txtBackgroundColour.val ( 'ff6600' );
+		$txtColour.val ( 'ffffff' );
+
+		return false;
+	} );
 } );
