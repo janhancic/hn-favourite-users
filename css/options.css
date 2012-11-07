@@ -26,6 +26,43 @@ aside {
 	text-align: center;
 }
 
+
+#PreviewContainer {
+	background-color: #F6F6EF;
+	font-family: Verdana;
+	overflow: hidden;
+}
+
+#Arrow {
+	float: left;
+	width: 10px;
+	margin-top: 4px;
+}
+
+#Comment {
+	float: left;
+	font-size: 9pt;
+	width: 600px;
+	margin-left: 5px;
+}
+
+#CommentHeader {
+	font-size: 8pt;
+	color: #828282;
+	margin-bottom: 5px;
+}
+
+#PreviewUser {
+	padding: 1px;
+	border-radius: 3px;
+}
+
+#Reply {
+	text-decoration: underline;
+	margin-top: 5px;
+	font-size: 7pt;
+}
+
 .btn.loading {
 	background-image: -webkit-gradient(linear, 0 0, 100% 100%,
 		color-stop(.25, rgba(0, 0, 0, .10)), 
@@ -46,4 +83,4 @@ aside {
 	to {
 		background-position: -50px 0;
 	}
-}​
+}

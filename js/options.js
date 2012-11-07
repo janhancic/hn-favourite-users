@@ -43,6 +43,18 @@ $( function () {
 	var $errorMsg = $( '#ErrorMsg' );
 	var $txtBackgroundColour = $( '#txtBackgroundColour' );
 	var $txtColour = $( '#txtColour' );
+	var $previewUser = $( '#PreviewUser' );
+	var colourTest = /^([0-9a-fA-F]{3})([0-9a-fA-F]{3})?$/;
+
+	var updatePreview = function () {
+		if ( colourTest.test ( $txtColour.val () ) === true ) {
+			$previewUser.css ( 'color', '#' + $txtColour.val () );
+		}
+
+		if ( colourTest.test ( $txtBackgroundColour.val () ) === true ) {
+			$previewUser.css ( 'backgroundColor', '#' + $txtBackgroundColour.val () );
+		}
+	};
 
 	var html = '';
 	users.getAll ().forEach ( function ( userName ) {
@@ -52,6 +64,11 @@ $( function () {
 
 	$txtBackgroundColour.val ( highlightColours.getBackgroundColour ().replace ( '#', '' ) );
 	$txtColour.val ( highlightColours.getColour ().replace ( '#', '' ) );
+
+	updatePreview ();
+
+	$txtBackgroundColour.blur ( updatePreview );
+	$txtColour.blur ( updatePreview );
 
 	$usersList.on ( 'click', 'a.icon-trash', function () {
 		var userNameToDelete = $( this ).data ( 'username' );
@@ -107,8 +124,6 @@ $( function () {
 	} );
 
 	$( '#HighlightColourForm' ).submit ( function () {
-		var colourTest = /^([0-9a-fA-F]{3})([0-9a-fA-F]{3})?$/;
-
 		if ( colourTest.test ( $txtBackgroundColour.val () ) == false ) {
 			pageMessage.show ( 'error', 'enter valid background colour' );
 			return false;
@@ -135,6 +150,7 @@ $( function () {
 		$txtColour.val ( 'ffffff' );
 
 		pageMessage.show ( 'success', 'colours reset to default values' );
+		updatePreview ();
 
 		return false;
 	} );
