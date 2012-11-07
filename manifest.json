@@ -13,7 +13,7 @@
 		"scripts": [
 			"js/localstorage.js",
 			"js/users.js",
-			"js/messages.js"
+			"js/background.js"
 		]
 	},
 	"content_scripts": [
