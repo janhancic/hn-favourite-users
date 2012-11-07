@@ -1,8 +1,8 @@
 // utils
 var forEach = Array.prototype.forEach;
 
-chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlight ) {
-	console.log ( usersToHighlight );
+chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData ) {
+	var usersToHighlight = extensionData.users;
 
 	// get the background colour of the top navigation bar
 	var highlightColour = document.querySelector ( 'table:first-child td:first-child' ).getAttribute ( 'bgcolor' );

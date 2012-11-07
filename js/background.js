@@ -1,8 +1,10 @@
-var users = new Users ();
-
 chrome.extension.onRequest.addListener ( function ( request, sender, sendResponse ) {
-	if ( request.method === 'getUsers' ) {
-		sendResponse ( users.getAll () );
+	if ( request.method === 'getData' ) {
+		var users = new Users ();
+
+		sendResponse ( {
+			users: users.getAll ()
+		} );
 	}
 } );
 
