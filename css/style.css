@@ -3,6 +3,7 @@
 	right: 0;
 	top: 30%;
 	padding: 10px;
+	padding-bottom: 15px;
 	background-color: #828282;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -34,4 +35,23 @@
 a.HnFU-User {
 	padding: 1px;
 	border-radius: 3px;
+}
+
+#HnFU-OptionsLinkContainer {
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	width: 15px;
+	height: 15px;
+	background-color: #f6f6ef;
+	border-top-right-radius: 10px;
+}
+
+#HnFU-OptionsLink {
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+	width: 12px;
+	height: 12px;
+	background-image: url('chrome-extension://jfgfipckhgdcnmfjmclndjdgebkbfejl/images/wrench.png');
 }

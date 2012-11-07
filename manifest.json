@@ -31,7 +31,10 @@
 		}
 	],
 	"permissions": [
-		"unlimitedStorage",
+		"tabs",
 		"http://news.ycombinator.com/*"
+	],
+	"web_accessible_resources": [
+		"images/wrench.png"
 	]
 }
