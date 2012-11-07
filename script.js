@@ -12,6 +12,10 @@ chrome.extension.sendRequest ( { method: 'getUsers' }, function ( usersToHighlig
 
 	var usersFound = [];
 	forEach.call ( userLinks, function ( userLink ) {
+		if ( userLink.parentNode && userLink.parentNode.className === 'pagetop' ) {
+			return;
+		}
+
 		if ( usersToHighlight.indexOf ( userLink.innerHTML ) !== -1 ) {
 			userLink.style.color = 'white';
 			userLink.style.backgroundColor = highlightColour;
