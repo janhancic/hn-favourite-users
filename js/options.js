@@ -18,8 +18,8 @@ $( function () {
 	} );
 	$usersList.append ( $( html ) );
 
-	$txtBackgroundColour.val ( highlightColours.getBackgroundColour () );
-	$txtColour.val ( highlightColours.getColour () );
+	$txtBackgroundColour.val ( highlightColours.getBackgroundColour ().replace ( '#', '' ) );
+	$txtColour.val ( highlightColours.getColour ().replace ( '#', '' ) );
 
 	$usersList.on ( 'click', 'a.icon-trash', function () {
 		var userNameToDelete = $( this ).data ( 'username' );
@@ -73,8 +73,8 @@ $( function () {
 	} );
 
 	$( '#HighlightColourForm' ).submit ( function () {
-		highlightColours.setBackgroundColour ( $txtBackgroundColour.val () );
-		highlightColours.setColour ( $txtColour.val () );
+		highlightColours.setBackgroundColour ( '#' + $txtBackgroundColour.val () );
+		highlightColours.setColour ( '#' + $txtColour.val () );
 
 		return false;
 	} );
