@@ -1,11 +1,12 @@
 chrome.extension.onRequest.addListener ( function ( request, sender, sendResponse ) {
 	if ( request.method === 'getData' ) {
 		var users = new Users ();
+		var highlightColours = new HighlightColours ();
 
 		sendResponse ( {
 			users: users.getAll (),
-			highlightBackgroundColour: '#ff6600',
-			highlightColour: 'white'
+			highlightBackgroundColour: highlightColours.getBackgroundColour (),
+			highlightColour: highlightColours.getColour ()
 		} );
 	}
 } );

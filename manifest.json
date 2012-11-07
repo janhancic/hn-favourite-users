@@ -13,6 +13,7 @@
 		"scripts": [
 			"js/localstorage.js",
 			"js/users.js",
+			"js/highlightcolours.js",
 			"js/background.js"
 		]
 	},

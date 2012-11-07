@@ -4,16 +4,22 @@ function getUserHtml ( userName ) {
 
 $( function () {
 	var users = new Users ();
+	var highlightColours = new HighlightColours ();
 	var $usersList = $( '#UsersList' );
 	var $txtNewUser = $( '#txtNewUser' );
 	var $btnAddNewUser = $( '#btnAddNewUser' );
 	var $errorMsg = $( '#ErrorMsg' );
+	var $txtBackgroundColour = $( '#txtBackgroundColour' );
+	var $txtColour = $( '#txtColour' );
 
 	var html = '';
 	users.getAll ().forEach ( function ( userName ) {
 		html += getUserHtml ( userName );
 	} );
 	$usersList.append ( $( html ) );
+
+	$txtBackgroundColour.val ( highlightColours.getBackgroundColour () );
+	$txtColour.val ( highlightColours.getColour () );
 
 	$usersList.on ( 'click', 'a.icon-trash', function () {
 		var userNameToDelete = $( this ).data ( 'username' );
@@ -62,6 +68,13 @@ $( function () {
 		$txtNewUser.val ( '' );
 		$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
 		$txtNewUser.attr ( 'disabled', false );
+
+		return false;
+	} );
+
+	$( '#HighlightColourForm' ).submit ( function () {
+		highlightColours.setBackgroundColour ( $txtBackgroundColour.val () );
+		highlightColours.setColour ( $txtColour.val () );
 
 		return false;
 	} );
