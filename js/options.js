@@ -107,6 +107,18 @@ $( function () {
 	} );
 
 	$( '#HighlightColourForm' ).submit ( function () {
+		var colourTest = /^([0-9a-fA-F]{3})([0-9a-fA-F]{3})?$/;
+
+		if ( colourTest.test ( $txtBackgroundColour.val () ) == false ) {
+			pageMessage.show ( 'error', 'enter valid background colour' );
+			return false;
+		}
+
+		if ( colourTest.test ( $txtColour.val () ) == false ) {
+			pageMessage.show ( 'error', 'enter valid font colour' );
+			return false;
+		}
+
 		highlightColours.setBackgroundColour ( '#' + $txtBackgroundColour.val () );
 		highlightColours.setColour ( '#' + $txtColour.val () );
 
