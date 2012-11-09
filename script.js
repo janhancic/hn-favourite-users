@@ -19,7 +19,7 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 			foundUsersEl.appendChild ( isFavouriteEl );
 		} else {
 			var isNotFavouriteEl = document.createElement ( 'div' );
-			isNotFavouriteEl.innerHTML = currentUser + ' is not on your favourite users list';
+			isNotFavouriteEl.innerHTML = currentUser + ' is not your favourite user';
 			foundUsersEl.appendChild ( isNotFavouriteEl );
 		}
 	} else {
