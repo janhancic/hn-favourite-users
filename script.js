@@ -17,10 +17,24 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 			var isFavouriteEl = document.createElement ( 'div' );
 			isFavouriteEl.innerHTML = currentUser + ' is your favourite user';
 			foundUsersEl.appendChild ( isFavouriteEl );
+
+			var addEl = document.createElement ( 'a' );
+			addEl.href = "#remove";
+			addEl.id = 'HnFU-AddRemoveLink';
+			addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/x.png' ) + '" /> remove from favourites';
+
+			foundUsersEl.appendChild ( addEl );
 		} else {
 			var isNotFavouriteEl = document.createElement ( 'div' );
 			isNotFavouriteEl.innerHTML = currentUser + ' is not your favourite user';
 			foundUsersEl.appendChild ( isNotFavouriteEl );
+
+			var addEl = document.createElement ( 'a' );
+			addEl.href = "#add";
+			addEl.id = 'HnFU-AddRemoveLink';
+			addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/heart.png' ) + '" /> add to favourites';
+
+			foundUsersEl.appendChild ( addEl );
 		}
 	} else {
 		// get all user links on the page
