@@ -7,7 +7,8 @@
 	padding: 5px;
 	padding-bottom: 20px;
 	padding-left: 20px;
-	background-color: #828282;
+	background-color: #ff6600;
+	color: #000000;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	-webkit-transition: margin-right 200ms linear;
@@ -19,13 +20,11 @@
 }
 
 #HnFU-FoundUsers h1 {
-	color: white;
 	font-size: 14px;
 	margin-top: 0;
 }
 
 #HnFU-FoundUsers div {
-	color: white;
 }
 
 #HnFU-FoundUsers div a {
