@@ -9,7 +9,7 @@
 	background-color: #828282;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-	-webkit-transition: margin-right 500ms linear;
+	-webkit-transition: margin-right 200ms linear;
 }
 
 #HnFU-FoundUsers:hover {
