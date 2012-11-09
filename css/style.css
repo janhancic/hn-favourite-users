@@ -2,11 +2,19 @@
 	position: fixed;
 	right: 0;
 	top: 30%;
+	width: 250px;
+	margin-right: -240px;
 	padding: 10px;
-	padding-bottom: 15px;
+	padding-bottom: 18px;
 	background-color: #828282;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	-webkit-transition: margin-right 500ms linear;
+}
+
+#HnFU-FoundUsers:hover {
+	margin-right: 0;
+	-webkit-transition: all 500ms linear;
 }
 
 #HnFU-FoundUsers h1 {

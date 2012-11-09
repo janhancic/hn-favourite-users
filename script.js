@@ -45,7 +45,7 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 
 		if ( usersFound.length > 0 ) {
 			var foundUsersTitleEl = document.createElement ( 'h1' );
-			foundUsersTitleEl.innerHTML = 'Your favourite users:';
+			foundUsersTitleEl.innerHTML = 'Favourite users on this page:';
 			foundUsersEl.appendChild ( foundUsersTitleEl );
 
 			usersFound.forEach ( function ( userFound ) {
