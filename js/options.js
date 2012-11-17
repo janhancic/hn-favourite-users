@@ -76,8 +76,43 @@ function UsersViewModel () {
 	};
 };
 
-$( function () {
-	var highlightColours = new HighlightColours ();
+function HighlightColoursViewModel () {
+	var self = this;
+	self.highlightColoursModel = new HighlightColours ();
+	self.backgroundColour = ko.observable ( self.highlightColoursModel.getBackgroundColour ().replace ( '#', '' ) );
+	self.colour = ko.observable ( self.highlightColoursModel.getColour ().replace ( '#', '' ) );
 
+	self.save = function () {
+		var colourTest = /^([0-9a-fA-F]{3})([0-9a-fA-F]{3})?$/;
+
+		if ( colourTest.test ( self.backgroundColour () ) === false ) {
+			pageMessage.show ( 'error', 'enter valid background colour' );
+			return false;
+		}
+
+		if ( colourTest.test ( self.colour () ) === false ) {
+			pageMessage.show ( 'error', 'enter valid font colour' );
+			return false;
+		}
+
+		self.highlightColoursModel.setBackgroundColour ( '#' + self.backgroundColour() );
+		self.highlightColoursModel.setColour ( '#' + self.colour() );
+
+		pageMessage.show ( 'success', 'colours saved' );
+	};
+
+	self.reset = function () {
+		self.highlightColoursModel.setBackgroundColour ( '#FF6600' );
+		self.highlightColoursModel.setColour ( '#FFFFFF' );
+
+		self.backgroundColour ( 'FF6600' );
+		self.colour ( 'FFFFFF' );
+
+		pageMessage.show ( 'success', 'colours reset to default values' );
+	};
+};
+
+$( function () {
 	ko.applyBindings ( new UsersViewModel (), document.getElementById ( 'Options' ) );
+	ko.applyBindings ( new HighlightColoursViewModel (), document.getElementById ( 'HighlighColoursOptions' ) );
 } );

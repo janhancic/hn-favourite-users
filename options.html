@@ -53,7 +53,7 @@
 			</div>
 			<div class="row-fluid">
 				<p class="lead">Select colours you want to use for <b>highlighting</b>:</p>
-				<div class="container">
+				<div class="container" id="HighlighColoursOptions">
 					<div class="row-fluid">
 						<form class="span4 form-horizontal" id="HighlightColourForm">
 							<div class="control-group">
@@ -61,7 +61,7 @@
 								<div class="controls">
 									<div class="input-prepend">
 										<span class="add-on">#</span>
-										<input class="span5" type="text" id="txtBackgroundColour" />
+										<input class="span5" type="text" id="txtBackgroundColour" data-bind="value: backgroundColour" />
 									</div>
 								</div>
 							</div>
@@ -70,13 +70,13 @@
 								<div class="controls">
 									<div class="input-prepend">
 										<span class="add-on">#</span>
-										<input class="span5" type="text" id="txtColour" class="input-mini" />
+										<input class="span5" type="text" id="txtColour" data-bind="value: colour" />
 									</div>
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls">
-									<button type="submit" class="btn btn-primary">save</button> or <a href="#reset" id="ResetColoursLink">reset to defaults</a>
+									<button type="button" data-bind="click: save" class="btn btn-primary">save</button> or <a href="#reset" data-bind="click: reset">reset to defaults</a>
 								</div>
 							</div>
 						</form>
@@ -85,7 +85,7 @@
 							<div id="PreviewContainer">
 								<img src="images/grayarrow.gif" id="Arrow" />
 								<div id="Comment">
-									<div id="CommentHeader">42 points by <span id="PreviewUser">d.adams</span> 1 hour ago | link</div>
+									<div id="CommentHeader">42 points by <span id="PreviewUser" data-bind="style: { color: '#' + colour(), backgroundColor: '#' + backgroundColour() }">d.adams</span> 1 hour ago | link</div>
 									There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable.
 									<br />There is another theory which states that this has already happened.
 									<div id="Reply">reply</div>
