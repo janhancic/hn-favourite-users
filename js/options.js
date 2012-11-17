@@ -30,128 +30,54 @@ var pageMessage = (function () {
 	};
 } () );
 
-function getUserHtml ( userName ) {
-	return '<tr id="tr_' + userName + '"><td>' + userName + '</td><td><a href="http://news.ycombinator.com/user?id=' + userName + '" target="_blank">view profile</a></td><td><a href="#remove" class="icon-trash" data-username="' + userName + '"></a></td></tr>';
-}
+function UsersViewModel () {
+	var self = this;
+	self.usersModel = new Users ();
+	self.users = ko.observableArray ( self.usersModel.getAll () );
+	self.newUserName = ko.observable ();
+	self.isAdding = ko.observable ( false );
 
-$( function () {
-	var users = new Users ();
-	var highlightColours = new HighlightColours ();
-	var $usersList = $( '#UsersList' );
-	var $txtNewUser = $( '#txtNewUser' );
-	var $btnAddNewUser = $( '#btnAddNewUser' );
-	var $errorMsg = $( '#ErrorMsg' );
-	var $txtBackgroundColour = $( '#txtBackgroundColour' );
-	var $txtColour = $( '#txtColour' );
-	var $previewUser = $( '#PreviewUser' );
-	var colourTest = /^([0-9a-fA-F]{3})([0-9a-fA-F]{3})?$/;
-
-	var updatePreview = function () {
-		if ( colourTest.test ( $txtColour.val () ) === true ) {
-			$previewUser.css ( 'color', '#' + $txtColour.val () );
-		}
-
-		if ( colourTest.test ( $txtBackgroundColour.val () ) === true ) {
-			$previewUser.css ( 'backgroundColor', '#' + $txtBackgroundColour.val () );
-		}
-	};
-
-	var html = '';
-	users.getAll ().forEach ( function ( userName ) {
-		html += getUserHtml ( userName );
-	} );
-	$usersList.append ( $( html ) );
-
-	$txtBackgroundColour.val ( highlightColours.getBackgroundColour ().replace ( '#', '' ) );
-	$txtColour.val ( highlightColours.getColour ().replace ( '#', '' ) );
-
-	updatePreview ();
-
-	$txtBackgroundColour.blur ( updatePreview );
-	$txtColour.blur ( updatePreview );
-
-	$usersList.on ( 'click', 'a.icon-trash', function () {
-		var userNameToDelete = $( this ).data ( 'username' );
-
-		users.remove ( userNameToDelete );
-
-		$( '#tr_' + userNameToDelete ).remove ();
-
-		return false;
-	} );
-
-	$( '#AddNewUserForm' ).submit ( function () {
+	self.add = function () {
 		pageMessage.hide ();
-		$btnAddNewUser.attr ( 'disabled', true ).addClass ( 'loading disabled' );
-		$txtNewUser.attr ( 'disabled', true );
+		self.isAdding ( true );
 
-		var userNameToAdd = $.trim ( $txtNewUser.val () );
+		var userNameToAdd = $.trim ( self.newUserName () );
 		if ( userNameToAdd === '' ) {
-			$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
-			$txtNewUser.attr ( 'disabled', false );
+			self.isAdding ( false );
 			return false;
 		}
 
-		if ( users.exists ( userNameToAdd ) === true )  {
+		if ( self.usersModel.exists ( userNameToAdd ) === true )  {
 			pageMessage.show ( 'error', 'user already on your list' );
-			$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
-			$txtNewUser.attr ( 'disabled', false );
-
+			self.isAdding ( false );
 			return false;
 		}
 
-		if ( users.isValid ( userNameToAdd ) === false ) {
+		if ( self.usersModel.isValid ( userNameToAdd ) === false ) {
 			pageMessage.show ( 'error', 'enter a valid HN username' );
-			$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
-			$txtNewUser.attr ( 'disabled', false );
-
+			self.isAdding ( false );
 			return false;
 		}
 
-		users.add ( userNameToAdd );
+		self.usersModel.add ( userNameToAdd );
+		self.users.push ( userNameToAdd );
 
-		var $newUser = $( getUserHtml ( userNameToAdd ) );
-
-		$usersList.append ( $newUser );
-
-		$txtNewUser.val ( '' );
-		$btnAddNewUser.attr ( 'disabled', false ).removeClass ( 'loading disabled' );
-		$txtNewUser.attr ( 'disabled', false );
+		self.newUserName ( '' );
+		self.isAdding ( false );
 
 		pageMessage.show ( 'success', 'user added to your list' );
+	};
 
-		return false;
-	} );
+	self.remove = function ( userName ) {
+		self.usersModel.remove ( userName );
+		self.users.remove ( userName );
 
-	$( '#HighlightColourForm' ).submit ( function () {
-		if ( colourTest.test ( $txtBackgroundColour.val () ) == false ) {
-			pageMessage.show ( 'error', 'enter valid background colour' );
-			return false;
-		}
+		pageMessage.show ( 'success', 'user removed from your list' );
+	};
+};
 
-		if ( colourTest.test ( $txtColour.val () ) == false ) {
-			pageMessage.show ( 'error', 'enter valid font colour' );
-			return false;
-		}
+$( function () {
+	var highlightColours = new HighlightColours ();
 
-		highlightColours.setBackgroundColour ( '#' + $txtBackgroundColour.val () );
-		highlightColours.setColour ( '#' + $txtColour.val () );
-
-		pageMessage.show ( 'success', 'colours saved' );
-
-		return false;
-	} );
-
-	$( '#ResetColoursLink' ).click ( function () {
-		highlightColours.setBackgroundColour ( '#ff6600' );
-		highlightColours.setColour ( '#ffffff' );
-
-		$txtBackgroundColour.val ( 'ff6600' );
-		$txtColour.val ( 'ffffff' );
-
-		pageMessage.show ( 'success', 'colours reset to default values' );
-		updatePreview ();
-
-		return false;
-	} );
+	ko.applyBindings ( new UsersViewModel (), document.getElementById ( 'Options' ) );
 } );

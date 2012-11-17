@@ -12,29 +12,15 @@
 					<h1>HN Favourite Users <small>options</small></h1>
 					<p class="lead">Add or remove your favourite <b>Hacker News</b> users:</p>
 					<table class="table table-striped table-hover table-condensed">
-						<tbody data-bind="visible: users().length === 0">
-							<tr>
-								<td colspan="3">you haven't added any users to your favourites yet</td>
-							</tr>
-						</tbody>
-						<tbody data-bind="foreach: users, visible: users().length > 0">
-							<tr>
-								<td data-bind="text: $data"></td>
-								<td>
-									<a data-bind="attr: { href: 'http://news.ycombinator.com/user?id=' + $data }" target="_blank">view profile</a>
-								</td>
-								<td>
-									<a href="#remove" class="icon-trash" data-bind="click: $parent.remove"></a>
-								</td>
-							</tr>
+						<tbody id="UsersList">
 						</tbody>
 						<tfoot>
 							<tr>
 								<td colspan="3">
-									<form class="form-inline" data-bind="submit: add">
+									<form class="form-inline" id="AddNewUserForm">
 										<div class="input-append">
-											<input id="txtNewUser" data-bind="value: newUserName, attr: { disabled: isAdding }" type="text" placeholder="Enter HN user ..." /> 
-											<input id="btnAddNewUser" data-bind="attr: { disabled: isAdding }, css: { 'loading disabled': isAdding }" type="submit" value="add" class="btn btn-primary" />
+											<input id="txtNewUser" type="text" placeholder="Enter HN user ..." /> 
+											<input id="btnAddNewUser" type="submit" value="add" class="btn btn-primary" />
 										</div>
 									</form>
 								</td>
@@ -99,7 +85,6 @@
 		<div id="PageMessage" class="alert"></div>
 
 		<script src="js/jquery_1.8.2.js"></script>
-		<script src="js/knockout.js"></script>
 		<script src="js/users.js"></script>
 		<script src="js/highlightcolours.js"></script>
 		<script src="js/localstorage.js"></script>
