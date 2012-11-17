@@ -70,5 +70,5 @@ a.HnFU-User {
 	left: 0;
 	width: 12px;
 	height: 12px;
-	background-image: url('chrome-extension://jfgfipckhgdcnmfjmclndjdgebkbfejl/images/wrench.png');
+	background-image: url('chrome-extension://__MSG_@@extension_id__/images/wrench.png');
 }
