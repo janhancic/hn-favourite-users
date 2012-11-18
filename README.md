@@ -9,6 +9,9 @@ A Google Chrome extension made to be used on [Hacker News](https://news.ycombina
 Go to [Chrome Web Store extension page](https://chrome.google.com/webstore/detail/hleiemhnepoghplnnhkhpnjeiaifnobo/preview) and install extension from there. This way you will automatically get any future updates.
 Or you can download the files from here and load it into Chrome by hand (load unpacked extension).
 
+## Why?
+See [this blog post](http://hancic.info/hn-favourite-users) on my home page for some details on why I made this and who helped me.
+
 ## License
 Copyright (C) 2012 Jan Hančič
 
