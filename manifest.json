@@ -36,8 +36,8 @@
 		"http://news.ycombinator.com/*"
 	],
 	"web_accessible_resources": [
-		"images/wrench.png",
-		"images/heart.png",
-		"images/x.png"
+		"img/wrench.png",
+		"img/heart.png",
+		"img/x.png"
 	]
 }

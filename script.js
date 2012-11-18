@@ -16,13 +16,13 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 		var removeEl = document.createElement ( 'a' );
 		removeEl.href = "#remove";
 		removeEl.id = 'HnFU-AddRemoveLink';
-		removeEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/x.png' ) + '" /> remove from favourites';
+		removeEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'img/x.png' ) + '" /> remove from favourites';
 		foundUsersEl.appendChild ( removeEl );
 
 		var addEl = document.createElement ( 'a' );
 		addEl.href = "#add";
 		addEl.id = 'HnFU-AddRemoveLink';
-		addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/heart.png' ) + '" /> add to favourites';
+		addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'img/heart.png' ) + '" /> add to favourites';
 		foundUsersEl.appendChild ( addEl );
 
 		removeEl.onclick = function () {
