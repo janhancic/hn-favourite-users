@@ -3,14 +3,21 @@ var pageMessage = (function () {
 	var fadeOutTimer = null;
 
 	return {
-		show: function ( type, message ) {
+		show: function ( type, message, position ) {
+			position = position ? position : 'top';
+
 			$message.removeClass ( 'alert-error' );
 			$message.removeClass ( 'alert-success' );
+			$message.removeClass ( 'PageMessageBottom' );
 
 			if ( type === 'error' ) {
 				$message.addClass ( 'alert-error' );
 			} else {
 				$message.addClass ( 'alert-success' );
+			}
+
+			if ( position === 'bottom' ) {
+				$message.addClass ( 'PageMessageBottom' );
 			}
 
 			$message.html ( message );
@@ -86,19 +93,19 @@ function HighlightColoursViewModel () {
 		var colourTest = /^([0-9a-fA-F]{3})([0-9a-fA-F]{3})?$/;
 
 		if ( colourTest.test ( self.backgroundColour () ) === false ) {
-			pageMessage.show ( 'error', 'enter valid background colour' );
+			pageMessage.show ( 'error', 'enter valid background colour', 'bottom' );
 			return false;
 		}
 
 		if ( colourTest.test ( self.colour () ) === false ) {
-			pageMessage.show ( 'error', 'enter valid font colour' );
+			pageMessage.show ( 'error', 'enter valid font colour', 'bottom' );
 			return false;
 		}
 
 		self.highlightColoursModel.setBackgroundColour ( '#' + self.backgroundColour() );
 		self.highlightColoursModel.setColour ( '#' + self.colour() );
 
-		pageMessage.show ( 'success', 'colours saved' );
+		pageMessage.show ( 'success', 'colours saved', 'bottom' );
 	};
 
 	self.reset = function () {

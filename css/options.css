@@ -26,6 +26,9 @@ aside {
 	text-align: center;
 }
 
+#PageMessage.PageMessageBottom {
+	top: 300px;
+}
 
 #PreviewContainer {
 	background-color: #F6F6EF;
