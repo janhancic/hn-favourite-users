@@ -15,8 +15,8 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 
 		if ( usersToHighlight.indexOf ( currentUser ) !== -1 ) {
 			var isFavouriteEl = document.createElement ( 'div' );
-			isFavouriteEl.innerHTML = currentUser + ' is your favourite user';
-			foundUsersEl.appendChild ( isFavouriteEl );
+			//isFavouriteEl.innerHTML = currentUser + ' is your favourite user';
+			//foundUsersEl.appendChild ( isFavouriteEl );
 
 			var addEl = document.createElement ( 'a' );
 			addEl.href = "#remove";
@@ -26,8 +26,8 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 			foundUsersEl.appendChild ( addEl );
 		} else {
 			var isNotFavouriteEl = document.createElement ( 'div' );
-			isNotFavouriteEl.innerHTML = currentUser + ' is not your favourite user';
-			foundUsersEl.appendChild ( isNotFavouriteEl );
+			//isNotFavouriteEl.innerHTML = currentUser + ' is not your favourite user';
+			//foundUsersEl.appendChild ( isNotFavouriteEl );
 
 			var addEl = document.createElement ( 'a' );
 			addEl.href = "#add";

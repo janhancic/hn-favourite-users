@@ -4,9 +4,10 @@
 	top: 30%;
 	width: 250px;
 	margin-right: -240px;
-	padding: 5px;
+	padding-top: 10px;
 	padding-bottom: 20px;
 	padding-left: 20px;
+	padding-right: 5px;
 	background-color: #ff6600;
 	color: #000;
 	border-top-left-radius: 5px;
@@ -35,6 +36,7 @@
 #HnFU-FoundUsers a {
 	display: block;
 	color: white;
+	margin-left: 10px;
 }
 
 #HnFU-FoundUsers #HnFU-AddRemoveLink {
@@ -44,6 +46,10 @@
 
 #HnFU-FoundUsers #HnFU-AddRemoveLink:hover {
 	text-decoration: none;
+}
+
+#HnFU-FoundUsers #HnFU-AddRemoveLink img {
+	vertical-align: bottom;
 }
 
 #HnFU-FoundUsers a:hover {
@@ -64,7 +70,8 @@ a.HnFU-User {
 	border-top-right-radius: 10px;
 }
 
-#HnFU-OptionsLink {
+a#HnFU-OptionsLink {
+	margin-left: 0;
 	position: absolute;
 	bottom: 0px;
 	left: 0;
