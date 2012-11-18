@@ -1,13 +1,23 @@
 chrome.extension.onRequest.addListener ( function ( request, sender, sendResponse ) {
-	if ( request.method === 'getData' ) {
-		var users = new Users ();
-		var highlightColours = new HighlightColours ();
+	var users = new Users ();
+	var highlightColours = new HighlightColours ();
 
+	if ( request.method === 'getData' ) {
 		sendResponse ( {
 			users: users.getAll (),
 			highlightBackgroundColour: highlightColours.getBackgroundColour (),
 			highlightColour: highlightColours.getColour ()
 		} );
+	} else if ( request.method === 'add' ) {
+		if ( users.exists ( request.userName ) === false ) {
+			users.add ( request.userName );
+		}
+
+		sendResponse ( { ok: 42 } );
+	} else if ( request.method === 'remove' ) {
+		users.remove ( request.userName );
+
+		sendResponse ( { ok: 42 } );
 	}
 } );
 

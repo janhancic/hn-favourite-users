@@ -13,28 +13,42 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 	if ( location.href.indexOf ( 'user?id=' ) !== -1 ) {
 		var currentUser = location.href.substr ( location.href.indexOf ( 'user?id=' ) + 8 );
 
+		var removeEl = document.createElement ( 'a' );
+		removeEl.href = "#remove";
+		removeEl.id = 'HnFU-AddRemoveLink';
+		removeEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/x.png' ) + '" /> remove from favourites';
+		foundUsersEl.appendChild ( removeEl );
+
+		var addEl = document.createElement ( 'a' );
+		addEl.href = "#add";
+		addEl.id = 'HnFU-AddRemoveLink';
+		addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/heart.png' ) + '" /> add to favourites';
+		foundUsersEl.appendChild ( addEl );
+
+		removeEl.onclick = function () {
+			chrome.extension.sendRequest ( { method: 'remove', userName: currentUser }, function () {
+				addEl.style.display = 'block';
+				removeEl.style.display = 'none';
+			} );
+
+			return false;
+		};
+
+		addEl.onclick = function () {
+			chrome.extension.sendRequest ( { method: 'add', userName: currentUser }, function () {
+				removeEl.style.display = 'block';
+				addEl.style.display = 'none';
+			} );
+
+			return false;
+		};
+
 		if ( usersToHighlight.indexOf ( currentUser ) !== -1 ) {
-			var isFavouriteEl = document.createElement ( 'div' );
-			//isFavouriteEl.innerHTML = currentUser + ' is your favourite user';
-			//foundUsersEl.appendChild ( isFavouriteEl );
-
-			var addEl = document.createElement ( 'a' );
-			addEl.href = "#remove";
-			addEl.id = 'HnFU-AddRemoveLink';
-			addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/x.png' ) + '" /> remove from favourites';
-
-			foundUsersEl.appendChild ( addEl );
+			removeEl.style.display = 'block';
+			addEl.style.display = 'none';
 		} else {
-			var isNotFavouriteEl = document.createElement ( 'div' );
-			//isNotFavouriteEl.innerHTML = currentUser + ' is not your favourite user';
-			//foundUsersEl.appendChild ( isNotFavouriteEl );
-
-			var addEl = document.createElement ( 'a' );
-			addEl.href = "#add";
-			addEl.id = 'HnFU-AddRemoveLink';
-			addEl.innerHTML = '<img src="' + chrome.extension.getURL ( 'images/heart.png' ) + '" /> add to favourites';
-
-			foundUsersEl.appendChild ( addEl );
+			addEl.style.display = 'block';
+			removeEl.style.display = 'none';
 		}
 	} else {
 		// get all user links on the page
