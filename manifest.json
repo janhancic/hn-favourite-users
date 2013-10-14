@@ -1,6 +1,6 @@
 {
 	"name": "HN Favourite Users",
-	"version": "0.1",
+	"version": "1.0.1",
 	"manifest_version": 2,
 	"description": "Highlights your favourite users on Hacker News (https://news.ycombinator.com/)",
 	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
