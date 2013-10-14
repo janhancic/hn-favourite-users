@@ -78,7 +78,7 @@ chrome.extension.sendRequest ( { method: 'getData' }, function ( extensionData )
 
 			usersFound.forEach ( function ( userFound ) {
 				var tmpEl = document.createElement ( 'a' );
-				tmpEl.href = 'http://news.ycombinator.com/user?id=' + userFound;
+				tmpEl.href = 'https://news.ycombinator.com/user?id=' + userFound;
 				tmpEl.innerHTML = userFound;
 
 				foundUsersEl.appendChild ( tmpEl );
